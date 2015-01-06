@@ -95,7 +95,7 @@ iSlowConnectionFactor = 1
 
 ' This example path is for 64 bit windows
 ' You might need the full path: ChromeEXE = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-ChromeEXE = "chrome.exe"
+ChromeEXE = """C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"""
 
 
 ' This example path is for 32 bit windows
@@ -125,6 +125,7 @@ oAutoIt.Sleep 3000
 WScript.Echo "Entering Loop"
 ' Enter the loop, change the password 99 more times
 tCurPw = curPW
+
 
 For x = 1 To 99
     WScript.Echo "Step " & x
@@ -176,7 +177,7 @@ Function GLogin(un, pw) ' Opens the Google Login page, enters the supplied Usern
     oAutoIt.Send "!d"							' This goes to the address bar
     oAutoIt.Sleep 250 * iSlowConnectionFactor 				' waits x ms times slow connection
     'oAutoIt.Send "https://accounts.google.com/Login{ENTER}"		' types this url and hits enter. Upon load, email field should have focus
-    oAutoIt.Send "https://accounts.google.com/ServiceLogin?Email=%22%22{ENTER}" ' types this url and hits enter. Upon load, email field should have focus. Email param makes it empty.
+    oAutoIt.Send "https://accounts.google.com/ServiceLogin?Email=" + un + "{ENTER}" ' types this url and hits enter. Upon load, email field should have focus. Email param makes it empty.
     oAutoIt.Sleep 2000 * iSlowConnectionFactor 				' waits x ms times slow connection
     oAutoIt.Send un & "{TAB}"						' types username and hits tab
     oAutoIt.Sleep 250 * iSlowConnectionFactor 				' waits x ms times slow connection
